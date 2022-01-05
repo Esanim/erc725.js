@@ -117,6 +117,12 @@ await erc725.fetchData('LSP3Profile'); // downloads and verifies the linked JSON
 */
 ```
 
+## GraphQL
+
+This branch is a snapshot for the GraphQL code which will be removed in the next release.
+
+The GraphQL feature is still in the scope but it will be available later once the main features are properly working for web3 and ethereum providers.
+
 ## Contributing
 
 Please check [CONTRIBUTING](./CONTRIBUTING.md).
