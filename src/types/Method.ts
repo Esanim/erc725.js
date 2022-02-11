@@ -5,10 +5,12 @@ export enum Method {
   ALL_DATA = 'allData',
   OWNER = 'owner',
   SUPPORTS_INTERFACE = 'supportsInterface',
+  IS_VALID_SIGNATURE = 'isValidSignature',
 }
 
 export enum Encoding {
   BYTES = 'bytes',
+  BYTES4 = 'bytes4',
   BOOL = 'bool',
   UINT256 = 'uint256',
   BYTES32_ARRAY = 'bytes32[]',

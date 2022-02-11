@@ -58,6 +58,13 @@ export const METHODS: Record<Method, MethodData> = {
     value: numberToHex(0),
     returnEncoding: Encoding.BOOL,
   },
+  [Method.IS_VALID_SIGNATURE]: {
+    sig: '0x1626ba7e',
+    gas: numberToHex(0),
+    gasPrice: numberToHex(0),
+    value: numberToHex(0),
+    returnEncoding: Encoding.BYTES4,
+  },
 };
 
 export enum SUPPORTED_HASH_FUNCTION_STRINGS {

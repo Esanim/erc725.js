@@ -34,6 +34,7 @@ import {
 } from './lib/utils';
 
 import { getSchema } from './lib/schemaParser';
+import { isValidSignature } from './lib/isValidSignature';
 
 import {
   ERC725JSONSchema,
@@ -317,6 +318,32 @@ export class ERC725<Schema extends GenericSchema> {
   }
 
   /**
+   *
+   *
+   * @param messageOrHash
+   * @param signature
+   * @returns
+   */
+  async isValidSignature(
+    messageOrHash: string,
+    signature: string,
+  ): Promise<boolean> {
+    if (!this.options.address || !isAddress(this.options.address)) {
+      throw new Error('Missing ERC725 contract address.');
+    }
+    if (!this.options.provider) {
+      throw new Error('Missing provider.');
+    }
+
+    return isValidSignature(
+      messageOrHash,
+      signature,
+      this.options.address,
+      this.options.provider,
+    );
+  }
+
+  /**
    * @internal
    * @param schema associated with the schema with keyType = 'Array'
    *               the data includes the raw (encoded) length key-value pair for the array
@@ -469,7 +496,7 @@ export class ERC725<Schema extends GenericSchema> {
   }
 
   private getAddressAndProvider() {
-    if (!isAddress(this.options.address as string)) {
+    if (!this.options.address || !isAddress(this.options.address)) {
       throw new Error('Missing ERC725 contract address.');
     }
     if (!this.options.provider) {
@@ -477,7 +504,7 @@ export class ERC725<Schema extends GenericSchema> {
     }
 
     return {
-      address: this.options.address as string,
+      address: this.options.address,
       provider: this.options.provider,
     };
   }
